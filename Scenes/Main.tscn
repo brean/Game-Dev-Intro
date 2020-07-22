@@ -1,0 +1,144 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://Images/background/blue.png" type="Texture" id=1]
+[ext_resource path="res://Images/background/cloudLayer1.png" type="Texture" id=2]
+[ext_resource path="res://Images/foreground/bush4.png" type="Texture" id=3]
+[ext_resource path="res://Images/foreground/bush1.png" type="Texture" id=4]
+[ext_resource path="res://Images/foreground/bushOrange3.png" type="Texture" id=5]
+[ext_resource path="res://Images/background/groundLayer1.png" type="Texture" id=6]
+[ext_resource path="res://Images/foreground/cloud1.png" type="Texture" id=7]
+[ext_resource path="res://Images/foreground/cloud2.png" type="Texture" id=8]
+[ext_resource path="res://Images/foreground/cloud6.png" type="Texture" id=9]
+[ext_resource path="res://Images/foreground/treeLong.png" type="Texture" id=10]
+[ext_resource path="res://Images/foreground/treePine.png" type="Texture" id=11]
+[ext_resource path="res://Images/goal_line.png" type="Texture" id=12]
+[ext_resource path="res://Images/thought_cloud.png" type="Texture" id=13]
+[ext_resource path="res://fonts/texgyre.tres" type="DynamicFont" id=14]
+[ext_resource path="res://Images/goal_line_walked.png" type="Texture" id=15]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=16]
+
+[sub_resource type="Environment" id=1]
+
+[node name="Main" type="Node2D"]
+
+[node name="blue" type="Sprite" parent="."]
+scale = Vector2( 5000, 2000 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
+
+[node name="cloudLayer1" type="Sprite" parent="."]
+position = Vector2( -512, 80 )
+texture = ExtResource( 2 )
+
+[node name="cloudLayer2" type="Sprite" parent="."]
+position = Vector2( 512, 85 )
+texture = ExtResource( 2 )
+
+[node name="cloudLayer3" type="Sprite" parent="."]
+position = Vector2( 1536, 90 )
+texture = ExtResource( 2 )
+
+[node name="cloudLayer4" type="Sprite" parent="."]
+position = Vector2( 2556.83, 72.5466 )
+texture = ExtResource( 2 )
+
+[node name="bush4" type="Sprite" parent="."]
+position = Vector2( 9.63135, 162.248 )
+rotation = -0.174533
+texture = ExtResource( 3 )
+
+[node name="bush1" type="Sprite" parent="."]
+position = Vector2( 446.69, 164.392 )
+texture = ExtResource( 4 )
+
+[node name="bushOrange3" type="Sprite" parent="."]
+position = Vector2( 887.611, 182.182 )
+texture = ExtResource( 5 )
+
+[node name="groundLayer1" type="Sprite" parent="."]
+position = Vector2( 0, 390 )
+texture = ExtResource( 6 )
+
+[node name="groundLayer4" type="Sprite" parent="."]
+position = Vector2( 2048, 390 )
+texture = ExtResource( 6 )
+
+[node name="groundLayer3" type="Sprite" parent="."]
+position = Vector2( -1024, 390 )
+texture = ExtResource( 6 )
+
+[node name="groundLayer2" type="Sprite" parent="."]
+position = Vector2( 1024, 390 )
+texture = ExtResource( 6 )
+
+[node name="groundLayer5" type="Sprite" parent="."]
+position = Vector2( 3072, 386.746 )
+texture = ExtResource( 6 )
+
+[node name="cloud1" type="Sprite" parent="."]
+position = Vector2( -201.819, -314.985 )
+texture = ExtResource( 7 )
+
+[node name="cloud2" type="Sprite" parent="."]
+position = Vector2( 251.503, -372.931 )
+texture = ExtResource( 8 )
+
+[node name="cloud6" type="Sprite" parent="."]
+position = Vector2( 984.37, -311.138 )
+texture = ExtResource( 9 )
+
+[node name="treeLong" type="Sprite" parent="."]
+position = Vector2( -424.376, -45.2262 )
+texture = ExtResource( 10 )
+
+[node name="treePine" type="Sprite" parent="."]
+position = Vector2( 1335.23, 7.94495 )
+texture = ExtResource( 11 )
+
+[node name="goal_line" type="Sprite" parent="."]
+position = Vector2( 1113.92, 185.74 )
+z_index = 2
+texture = ExtResource( 12 )
+
+[node name="thought_cloud" type="Sprite" parent="."]
+position = Vector2( 1288.33, -96.8595 )
+texture = ExtResource( 13 )
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="thought_cloud"]
+margin_left = -187.0
+margin_top = -65.0
+margin_right = 333.0
+margin_bottom = 73.0
+mouse_filter = 2
+custom_fonts/normal_font = ExtResource( 14 )
+text = "das ist doch kein Spiel?!"
+scroll_active = false
+
+[node name="goal_line_walked" type="Sprite" parent="."]
+visible = false
+position = Vector2( 1112.88, 184.536 )
+z_index = 2
+texture = ExtResource( 15 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = -498.0
+margin_top = -284.0
+margin_right = 494.0
+margin_bottom = -216.0
+mouse_filter = 2
+custom_fonts/normal_font = ExtResource( 14 )
+text = "GameLoop"
+scroll_active = false
+
+[node name="Player" parent="." instance=ExtResource( 16 )]
+position = Vector2( -220, 270 )
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2( 220, -270 )
+current = true
+smoothing_enabled = true

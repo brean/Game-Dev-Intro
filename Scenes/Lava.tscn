@@ -1,0 +1,224 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://Images/background/background_lava.png" type="Texture" id=1]
+[ext_resource path="res://Images/background/Tile_28.png" type="Texture" id=2]
+[ext_resource path="res://Images/foreground/bush3.png" type="Texture" id=3]
+[ext_resource path="res://Images/foreground/bush1.png" type="Texture" id=4]
+[ext_resource path="res://Images/background/Tile_27.png" type="Texture" id=5]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Images/platforms/ground_grass.png" type="Texture" id=7]
+[ext_resource path="res://Images/platforms/ground_grass_small.png" type="Texture" id=8]
+[ext_resource path="res://Images/foreground/cloud1.png" type="Texture" id=9]
+[ext_resource path="res://Images/foreground/cloud4.png" type="Texture" id=10]
+[ext_resource path="res://Images/goal_line.png" type="Texture" id=11]
+[ext_resource path="res://Images/ui/numbers/text_0.png" type="Texture" id=12]
+[ext_resource path="res://Images/ui/numbers/text_dots.png" type="Texture" id=13]
+[ext_resource path="res://Images/ui/numbers/text_1.png" type="Texture" id=14]
+[ext_resource path="res://Images/ui/coin_gold.png" type="Texture" id=15]
+[ext_resource path="res://Scenes/Robot.tscn" type="PackedScene" id=16]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="background_lava" type="Sprite" parent="."]
+position = Vector2( 1916.77, 483.406 )
+scale = Vector2( 868.216, 1.31631 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Tile_28" type="Sprite" parent="."]
+position = Vector2( 1919.42, 1118.79 )
+scale = Vector2( 17.1088, 1 )
+texture = ExtResource( 2 )
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="bush3" type="Sprite" parent="Node2D"]
+position = Vector2( 1705.11, 710.613 )
+texture = ExtResource( 3 )
+
+[node name="bush1" type="Sprite" parent="Node2D"]
+position = Vector2( 375.349, 713.005 )
+texture = ExtResource( 4 )
+
+[node name="Tile_43" type="Sprite" parent="Node2D"]
+position = Vector2( 460, 1140 )
+texture = ExtResource( 5 )
+offset = Vector2( -332, -250 )
+
+[node name="Tile_27" type="Sprite" parent="Node2D"]
+position = Vector2( 204, 1140 )
+texture = ExtResource( 5 )
+offset = Vector2( -332, -250 )
+
+[node name="Tile_29" type="Sprite" parent="Node2D"]
+position = Vector2( 460, 1140 )
+texture = ExtResource( 5 )
+offset = Vector2( -76, -250 )
+
+[node name="Tile_30" type="Sprite" parent="Node2D"]
+position = Vector2( 460, 1140 )
+texture = ExtResource( 5 )
+offset = Vector2( 180, -250 )
+
+[node name="Tile_31" type="Sprite" parent="Node2D"]
+position = Vector2( 460, 1140 )
+texture = ExtResource( 5 )
+offset = Vector2( 436, -250 )
+
+[node name="Tile_28" type="Sprite" parent="Node2D"]
+position = Vector2( 1484, 1140 )
+texture = ExtResource( 5 )
+offset = Vector2( -332, -250 )
+
+[node name="Tile_32" type="Sprite" parent="Node2D"]
+position = Vector2( 1484, 1140 )
+texture = ExtResource( 5 )
+offset = Vector2( -76, -250 )
+
+[node name="Tile_33" type="Sprite" parent="Node2D"]
+position = Vector2( 1484, 1140 )
+texture = ExtResource( 5 )
+offset = Vector2( 180, -250 )
+
+[node name="Tile_34" type="Sprite" parent="Node2D"]
+position = Vector2( 1484, 1140 )
+texture = ExtResource( 5 )
+offset = Vector2( 436, -250 )
+
+[node name="Tile_35" type="Sprite" parent="Node2D"]
+position = Vector2( 2508, 1140 )
+texture = ExtResource( 5 )
+offset = Vector2( -332, -250 )
+
+[node name="Tile_36" type="Sprite" parent="Node2D"]
+position = Vector2( 2508, 1140 )
+texture = ExtResource( 5 )
+offset = Vector2( -76, -250 )
+
+[node name="Tile_37" type="Sprite" parent="Node2D"]
+position = Vector2( 2508, 1140 )
+texture = ExtResource( 5 )
+offset = Vector2( 180, -250 )
+
+[node name="Tile_38" type="Sprite" parent="Node2D"]
+position = Vector2( 2508, 1140 )
+texture = ExtResource( 5 )
+offset = Vector2( 436, -250 )
+
+[node name="Tile_39" type="Sprite" parent="Node2D"]
+position = Vector2( 3532, 1140 )
+texture = ExtResource( 5 )
+offset = Vector2( -332, -250 )
+
+[node name="Tile_40" type="Sprite" parent="Node2D"]
+position = Vector2( 3532, 1140 )
+texture = ExtResource( 5 )
+offset = Vector2( -76, -250 )
+
+[node name="Tile_41" type="Sprite" parent="Node2D"]
+position = Vector2( 3532, 1140 )
+texture = ExtResource( 5 )
+offset = Vector2( 180, -250 )
+
+[node name="Tile_42" type="Sprite" parent="Node2D"]
+position = Vector2( 3532, 1140 )
+texture = ExtResource( 5 )
+offset = Vector2( 436, -250 )
+
+[node name="Player" parent="Node2D" instance=ExtResource( 6 )]
+position = Vector2( 260.841, 754.02 )
+
+[node name="ground_grass" type="Sprite" parent="Node2D"]
+position = Vector2( 341.84, 814.344 )
+texture = ExtResource( 7 )
+
+[node name="ground_grass2" type="Sprite" parent="Node2D"]
+position = Vector2( 989.382, 696.196 )
+texture = ExtResource( 7 )
+
+[node name="ground_grass3" type="Sprite" parent="Node2D"]
+position = Vector2( 1600.57, 802.983 )
+texture = ExtResource( 7 )
+
+[node name="ground_grass4" type="Sprite" parent="Node2D"]
+position = Vector2( 2132.24, 659.843 )
+texture = ExtResource( 7 )
+
+[node name="ground_grass_small" type="Sprite" parent="Node2D"]
+position = Vector2( 2616.19, 784.807 )
+texture = ExtResource( 8 )
+
+[node name="ground_grass_small2" type="Sprite" parent="Node2D"]
+position = Vector2( 2986.54, 612.129 )
+texture = ExtResource( 8 )
+
+[node name="ground_grass5" type="Sprite" parent="Node2D"]
+position = Vector2( 3440.95, 403.098 )
+texture = ExtResource( 7 )
+
+[node name="cloud1" type="Sprite" parent="."]
+position = Vector2( 2900.94, -59.5012 )
+texture = ExtResource( 9 )
+
+[node name="cloud4" type="Sprite" parent="."]
+position = Vector2( 1035.45, -21.2346 )
+texture = ExtResource( 10 )
+
+[node name="goal_line" type="Sprite" parent="."]
+position = Vector2( 3422.32, 315.164 )
+scale = Vector2( 0.683105, 0.449918 )
+texture = ExtResource( 11 )
+
+[node name="extra_platforms" type="Node2D" parent="."]
+editor/display_folded = true
+
+[node name="ground_grass6" type="Sprite" parent="extra_platforms"]
+position = Vector2( 1596.25, 390.715 )
+texture = ExtResource( 7 )
+
+[node name="ground_grass_small" type="Sprite" parent="extra_platforms"]
+position = Vector2( 1983.18, 143.406 )
+texture = ExtResource( 8 )
+
+[node name="timer" type="Node2D" parent="."]
+editor/display_folded = true
+visible = false
+
+[node name="Node2D" type="Node2D" parent="timer"]
+position = Vector2( 150, 500 )
+
+[node name="text_1" type="Sprite" parent="timer/Node2D"]
+texture = ExtResource( 12 )
+
+[node name="text_0" type="Sprite" parent="timer/Node2D"]
+position = Vector2( 50, 0 )
+texture = ExtResource( 12 )
+
+[node name="text_dots" type="Sprite" parent="timer/Node2D"]
+position = Vector2( 100, 0 )
+texture = ExtResource( 13 )
+
+[node name="text_4" type="Sprite" parent="timer/Node2D"]
+position = Vector2( 150, 0 )
+texture = ExtResource( 14 )
+
+[node name="text_3" type="Sprite" parent="timer/Node2D"]
+position = Vector2( 200, 0 )
+texture = ExtResource( 12 )
+
+[node name="coin_gold" type="Sprite" parent="."]
+visible = false
+position = Vector2( 1965.58, 41.7241 )
+texture = ExtResource( 15 )
+
+[node name="robots" type="Node2D" parent="."]
+editor/display_folded = true
+visible = false
+
+[node name="Robot" parent="robots" instance=ExtResource( 16 )]
+position = Vector2( 1047.58, 661.247 )
+
+[node name="Robot2" parent="robots" instance=ExtResource( 16 )]
+position = Vector2( 1643.32, 339.635 )
