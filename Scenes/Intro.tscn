@@ -4,7 +4,7 @@
 [ext_resource path="res://Images/background/cloudLayer1.png" type="Texture" id=2]
 [ext_resource path="res://fonts/texgyre.tres" type="DynamicFont" id=3]
 [ext_resource path="res://fonts/texgyre-italics.tres" type="DynamicFont" id=4]
-[ext_resource path="res://Images/ui/green_button05.png" type="Texture" id=5]
+[ext_resource path="res://Images/ui/green_button01.png" type="Texture" id=5]
 
 [node name="Node2D" type="Node2D"]
 
@@ -44,24 +44,29 @@ rect_clip_content = false
 custom_fonts/normal_font = ExtResource( 4 )
 bbcode_enabled = true
 bbcode_text = "Die absoluten Grundlagen um in kürzester Zeit einen Spieleprototypen zu entwickeln."
-text = "Die absoluten Grundlagen um in kürzester Zeit einen
-                   Spieleprototypen zu entwickeln."
+text = "Die absoluten Grundlagen um in kürzester Zeit einen Spieleprototypen zu entwickeln."
 scroll_active = false
 
-[node name="green_button05" type="TouchScreenButton" parent="."]
-position = Vector2( 852.004, 699.276 )
-scale = Vector2( 1.5, 1.5 )
-normal = ExtResource( 5 )
+[node name="Button" type="Button" parent="."]
+margin_left = 856.477
+margin_top = 677.802
+margin_right = 1058.48
+margin_bottom = 728.802
+action_mode = 0
+icon = ExtResource( 5 )
+flat = true
 
-[node name="Node2D" type="Node2D" parent="green_button05"]
+[node name="Node2D" type="Node2D" parent="Button"]
+position = Vector2( 852.004, 699.276 )
 scale = Vector2( 0.75, 0.75 )
 
-[node name="RichTextLabel3" type="RichTextLabel" parent="green_button05/Node2D"]
-margin_left = 2.0
-margin_top = 9.00015
-margin_right = 253.0
-margin_bottom = 54.0002
+[node name="RichTextLabel3" type="RichTextLabel" parent="Button/Node2D"]
+margin_left = -1057.33
+margin_top = -922.96
+margin_right = -951.326
+margin_bottom = -873.96
 rect_clip_content = false
+mouse_filter = 2
 custom_fonts/normal_font = ExtResource( 3 )
 bbcode_enabled = true
 bbcode_text = "[center]LOS![/center]"
