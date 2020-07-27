@@ -1,6 +1,6 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://Scenes/Player.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/player.gd" type="Script" id=1]
 [ext_resource path="res://Images/character/Female adventurer/back.png" type="Texture" id=2]
 [ext_resource path="res://Images/character/Female adventurer/arm.png" type="Texture" id=3]
 [ext_resource path="res://Images/character/Female adventurer/hand.png" type="Texture" id=4]
@@ -9,12 +9,19 @@
 [ext_resource path="res://Images/character/Female adventurer/head.png" type="Texture" id=7]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 67.4357
-height = 71.3313
+radius = 53.2572
+height = 92.9467
 
-[node name="Player" type="KinematicBody2D"]
-collision_layer = 4
+[sub_resource type="CircleShape2D" id=2]
+
+[node name="Player" type="RigidBody2D"]
+mode = 2
+gravity_scale = 10.0
 script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -100 )
+shape = SubResource( 1 )
 
 [node name="Body" type="Node2D" parent="."]
 position = Vector2( 0, -100 )
@@ -23,11 +30,12 @@ position = Vector2( 0, -100 )
 z_index = 1
 
 [node name="back" type="Sprite" parent="Body/Graphics"]
-position = Vector2( 5.85486, -31.8805 )
+position = Vector2( 0, -31.881 )
 texture = ExtResource( 2 )
 
 [node name="arm2" type="Sprite" parent="Body/Graphics"]
-position = Vector2( 47.9461, 15.8987 )
+editor/display_folded = true
+position = Vector2( 41.9461, 15.8987 )
 rotation = -0.380482
 texture = ExtResource( 3 )
 
@@ -36,7 +44,8 @@ position = Vector2( 7.9632, 34.128 )
 texture = ExtResource( 4 )
 
 [node name="arm" type="Sprite" parent="Body/Graphics"]
-position = Vector2( -41.6988, 16.8775 )
+editor/display_folded = true
+position = Vector2( -47.6988, 16.8775 )
 rotation = 0.380482
 texture = ExtResource( 3 )
 flip_h = true
@@ -47,23 +56,29 @@ texture = ExtResource( 4 )
 flip_h = true
 
 [node name="leg2" type="Sprite" parent="Body/Graphics"]
-position = Vector2( -15.7595, 59.1275 )
+position = Vector2( -21.7595, 59.1275 )
 rotation = 0.762709
 texture = ExtResource( 5 )
 
 [node name="leg" type="Sprite" parent="Body/Graphics"]
-position = Vector2( 34.8638, 59.6963 )
+position = Vector2( 28.8638, 59.6963 )
 rotation = -0.380482
 texture = ExtResource( 5 )
 
 [node name="torso" type="Sprite" parent="Body/Graphics"]
-position = Vector2( 6.00342, 15.7795 )
+editor/display_folded = true
+position = Vector2( 0, 15.78 )
 texture = ExtResource( 6 )
 
 [node name="head" type="Sprite" parent="Body/Graphics/torso"]
 position = Vector2( -0.0841675, -56.9037 )
 texture = ExtResource( 7 )
 
-[node name="PhysicsShape" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -100 )
-shape = SubResource( 1 )
+[node name="ground_check" type="Area2D" parent="Body"]
+position = Vector2( 0, 100 )
+
+[node name="ground_collision" type="CollisionShape2D" parent="Body/ground_check"]
+position = Vector2( -0.299782, 1.6029 )
+shape = SubResource( 2 )
+[connection signal="body_entered" from="Body/ground_check" to="." method="_on_ground_check_body_entered"]
+[connection signal="body_exited" from="Body/ground_check" to="." method="_on_ground_check_body_exited"]
