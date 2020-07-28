@@ -1,7 +1,5 @@
 # Game Dev Intro
 
-(WORK-IN-PROGRESS, link to presentation and Video comming soon...)
-
 Explainations on how to generally create a game for a Game Jam... from inside a game engine.
 
 ## Asset Credits
