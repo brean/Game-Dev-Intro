@@ -18,6 +18,9 @@ height = 92.9467
 mode = 2
 gravity_scale = 10.0
 script = ExtResource( 1 )
+acceleration = 2000
+top_move_speed = 400
+top_jump_speed = 600
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -100 )
@@ -74,7 +77,9 @@ texture = ExtResource( 6 )
 position = Vector2( -0.0841675, -56.9037 )
 texture = ExtResource( 7 )
 
-[node name="ground_check" type="Area2D" parent="Body"]
+[node name="ground_check" type="Area2D" parent="Body" groups=[
+"player",
+]]
 position = Vector2( 0, 100 )
 
 [node name="ground_collision" type="CollisionShape2D" parent="Body/ground_check"]

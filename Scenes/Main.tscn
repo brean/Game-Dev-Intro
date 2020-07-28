@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Images/background/blue.png" type="Texture" id=1]
 [ext_resource path="res://Images/foreground/cloud1.png" type="Texture" id=2]
@@ -17,18 +17,24 @@
 [ext_resource path="res://Images/goal_line_walked_front.png" type="Texture" id=15]
 [ext_resource path="res://Images/goal_line_walked_back.png" type="Texture" id=16]
 [ext_resource path="res://Images/goal_line.png" type="Texture" id=17]
-[ext_resource path="res://Images/thought_cloud.png" type="Texture" id=18]
-[ext_resource path="res://fonts/texgyre.tres" type="DynamicFont" id=19]
-[ext_resource path="res://Images/callout.png" type="Texture" id=20]
-[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Scripts/GoalReached.gd" type="Script" id=18]
+[ext_resource path="res://Scripts/ShowWhileCollidingWithPlayer.gd" type="Script" id=19]
+[ext_resource path="res://Scripts/RemoveOnCollide.gd" type="Script" id=20]
+[ext_resource path="res://Images/thought_cloud.png" type="Texture" id=21]
+[ext_resource path="res://fonts/texgyre.tres" type="DynamicFont" id=22]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=23]
+[ext_resource path="res://Images/callout.png" type="Texture" id=24]
 
 [sub_resource type="Environment" id=1]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 80, 211.466 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 5168.61, 139.284 )
 
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 90.8934, 211.466 )
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 2480, 1500 )
 
 [node name="Main" type="Node2D"]
 
@@ -36,6 +42,7 @@ extents = Vector2( 90.8934, 211.466 )
 environment = SubResource( 1 )
 
 [node name="Background" type="Node2D" parent="."]
+editor/display_folded = true
 
 [node name="blue" type="Sprite" parent="Background"]
 position = Vector2( -6.02112, -433.518 )
@@ -43,32 +50,23 @@ scale = Vector2( 9532.23, 2033.8 )
 texture = ExtResource( 1 )
 
 [node name="cloud1" type="Sprite" parent="Background"]
-position = Vector2( -201.819, -314.985 )
+position = Vector2( -550, -430 )
 texture = ExtResource( 2 )
 
 [node name="cloud2" type="Sprite" parent="Background"]
-position = Vector2( 251.503, -372.931 )
+position = Vector2( 250, -490 )
 texture = ExtResource( 3 )
 
 [node name="cloud6" type="Sprite" parent="Background"]
 position = Vector2( 984.37, -311.138 )
 texture = ExtResource( 4 )
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Background" groups=[
-"solid",
-]]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/StaticBody2D" groups=[
-"solid",
-]]
-position = Vector2( -551.208, 408.106 )
-shape = SubResource( 2 )
-
 [node name="Clouds" type="Node2D" parent="."]
+editor/display_folded = true
 
 [node name="cloud_white" type="Sprite" parent="Clouds"]
-position = Vector2( 2660.8, 799.582 )
-scale = Vector2( 1695.65, 1209.25 )
+position = Vector2( 3786.09, 1622.69 )
+scale = Vector2( 3947.82, 2854.63 )
 texture = ExtResource( 5 )
 
 [node name="cloudLayer1" type="Sprite" parent="Clouds"]
@@ -96,6 +94,7 @@ position = Vector2( 4572.04, 101.96 )
 texture = ExtResource( 6 )
 
 [node name="Ground" type="Node2D" parent="."]
+editor/display_folded = true
 
 [node name="bushAlt1" type="Sprite" parent="Ground"]
 position = Vector2( 2053.2, 181.928 )
@@ -122,7 +121,7 @@ position = Vector2( -1024, 390 )
 texture = ExtResource( 10 )
 
 [node name="groundLayer4" type="Sprite" parent="Ground"]
-position = Vector2( 2050, 390 )
+position = Vector2( 2048, 390 )
 texture = ExtResource( 10 )
 
 [node name="groundLayer5" type="Sprite" parent="Ground"]
@@ -140,7 +139,7 @@ scale = Vector2( 1, 1 )
 texture = ExtResource( 11 )
 
 [node name="treeLong" type="Sprite" parent="Ground"]
-position = Vector2( -431.192, -29.3217 )
+position = Vector2( -830, -20 )
 texture = ExtResource( 12 )
 
 [node name="treeLongOrange" type="Sprite" parent="Ground"]
@@ -148,7 +147,7 @@ position = Vector2( 3170.98, 35.9112 )
 texture = ExtResource( 13 )
 
 [node name="treePine" type="Sprite" parent="Ground"]
-position = Vector2( 1335.23, 7.94495 )
+position = Vector2( 2576.12, 41.0613 )
 texture = ExtResource( 14 )
 
 [node name="goal_line_walked_front" type="Sprite" parent="Ground"]
@@ -167,73 +166,118 @@ position = Vector2( 1112, 188 )
 z_index = 5
 texture = ExtResource( 17 )
 
-[node name="Area2D" type="Area2D" parent="Ground"]
+[node name="GoalArea" type="Area2D" parent="Ground"]
 position = Vector2( 1100, 230 )
+script = ExtResource( 18 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/GoalArea"]
 shape = SubResource( 3 )
 
-[node name="thought_cloud" type="Sprite" parent="."]
-editor/display_folded = true
-position = Vector2( 2247.02, -150.305 )
-texture = ExtResource( 18 )
+[node name="laaangweilig" type="Area2D" parent="Ground"]
+position = Vector2( 1500, 230 )
+script = ExtResource( 19 )
+node_path = "../../langweilig"
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="thought_cloud"]
-margin_left = -187.0
-margin_top = -65.0
-margin_right = 333.0
-margin_bottom = 73.0
-mouse_filter = 2
-custom_fonts/normal_font = ExtResource( 19 )
-text = "das ist doch kein Spiel?!"
-scroll_active = false
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/laaangweilig"]
+shape = SubResource( 3 )
 
-[node name="thought_cloud2" type="Sprite" parent="."]
+[node name="kein_spiel" type="Area2D" parent="Ground"]
+position = Vector2( 2010, 220 )
+script = ExtResource( 19 )
+node_path = "../../kein_spiel"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/kein_spiel"]
+shape = SubResource( 3 )
+
+[node name="remove_ground" type="Area2D" parent="Ground"]
+position = Vector2( 2820, 240 )
+script = ExtResource( 20 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/remove_ground"]
+shape = SubResource( 3 )
+
+[node name="Ground" type="StaticBody2D" parent="Ground" groups=[
+"solid",
+]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/Ground" groups=[
+"solid",
+]]
+position = Vector2( -551.208, 408.106 )
+shape = SubResource( 2 )
+
+[node name="du spinnst" type="Area2D" parent="."]
 editor/display_folded = true
+position = Vector2( 2870, 450 )
+script = ExtResource( 19 )
+node_path = "../Player/du_spinnst"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="du spinnst"]
+position = Vector2( 714, 1550 )
+shape = SubResource( 4 )
+
+[node name="langweilig" type="Sprite" parent="."]
 position = Vector2( 1645.75, -146.965 )
-texture = ExtResource( 18 )
+texture = ExtResource( 21 )
 
-[node name="RichTextLabel3" type="RichTextLabel" parent="thought_cloud2"]
+[node name="RichTextLabel3" type="RichTextLabel" parent="langweilig"]
 margin_left = -187.0
 margin_top = -65.0
 margin_right = 333.0
 margin_bottom = 73.0
 mouse_filter = 2
-custom_fonts/normal_font = ExtResource( 19 )
+custom_fonts/normal_font = ExtResource( 22 )
 text = "laaaaaangweilig!"
 scroll_active = false
 
-[node name="callout" type="Sprite" parent="."]
-editor/display_folded = true
-position = Vector2( 2903.65, -181.536 )
-texture = ExtResource( 20 )
+[node name="kein_spiel" type="Sprite" parent="."]
+position = Vector2( 2247.02, -150.305 )
+texture = ExtResource( 21 )
 
-[node name="RichTextLabel4" type="RichTextLabel" parent="callout"]
+[node name="RichTextLabel2" type="RichTextLabel" parent="kein_spiel"]
+margin_left = -187.0
+margin_top = -65.0
+margin_right = 333.0
+margin_bottom = 73.0
+mouse_filter = 2
+custom_fonts/normal_font = ExtResource( 22 )
+text = "das ist doch kein Spiel?!"
+scroll_active = false
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = -150.0
+margin_top = -284.0
+margin_right = 842.0
+margin_bottom = -216.0
+mouse_filter = 2
+custom_fonts/normal_font = ExtResource( 22 )
+text = "GameLoop"
+scroll_active = false
+
+[node name="Player" parent="." groups=[
+"player",
+] instance=ExtResource( 23 )]
+position = Vector2( -440, 240 )
+z_index = 1
+acceleration = 1000
+top_move_speed = 300
+
+[node name="du_spinnst" type="Sprite" parent="Player"]
+position = Vector2( 20, -400 )
+texture = ExtResource( 24 )
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="Player/du_spinnst"]
 margin_left = -211.311
 margin_top = -37.9815
 margin_right = 308.689
 margin_bottom = 100.018
 mouse_filter = 2
-custom_fonts/normal_font = ExtResource( 19 )
+custom_fonts/normal_font = ExtResource( 22 )
 text = "   Waaaaaaah!
 Du spinnst doch!"
 scroll_active = false
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-margin_left = -498.0
-margin_top = -284.0
-margin_right = 494.0
-margin_bottom = -216.0
-mouse_filter = 2
-custom_fonts/normal_font = ExtResource( 19 )
-text = "GameLoop"
-scroll_active = false
-
-[node name="Player" parent="." instance=ExtResource( 21 )]
-position = Vector2( -549.935, 247.384 )
-z_index = 1
-
 [node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2( 549.935, -247.384 )
+position = Vector2( 410, -247.384 )
 current = true
 smoothing_enabled = true

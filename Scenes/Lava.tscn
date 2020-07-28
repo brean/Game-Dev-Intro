@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Images/background/blue.png" type="Texture" id=1]
 [ext_resource path="res://Images/background/background_lava.png" type="Texture" id=2]
@@ -16,15 +16,18 @@
 [ext_resource path="res://Images/ui/numbers/text_0.png" type="Texture" id=14]
 [ext_resource path="res://Images/ui/numbers/text_dots.png" type="Texture" id=15]
 [ext_resource path="res://Images/ui/numbers/text_1.png" type="Texture" id=16]
-[ext_resource path="res://Images/goal_line.png" type="Texture" id=17]
-[ext_resource path="res://Images/ui/coin_gold.png" type="Texture" id=18]
-[ext_resource path="res://Scenes/Robot.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Images/ui/coin_gold.png" type="Texture" id=17]
+[ext_resource path="res://Scenes/Robot.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Images/goal_line.png" type="Texture" id=19]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 189.743, 22.4125 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 98.9155, 23.8976 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 3230, 560 )
 
 [node name="Node2D" type="Node2D"]
 
@@ -39,7 +42,7 @@ __meta__ = {
 [node name="LavaBackground" type="Node2D" parent="."]
 
 [node name="background_lava" type="Sprite" parent="LavaBackground"]
-position = Vector2( 3029.64, 483.406 )
+position = Vector2( 3030, 480 )
 scale = Vector2( 1313.36, 1.31631 )
 texture = ExtResource( 2 )
 
@@ -49,8 +52,8 @@ texture = ExtResource( 3 )
 offset = Vector2( -332, -250 )
 
 [node name="Tile_28" type="Sprite" parent="LavaBackground"]
-position = Vector2( 2767.7, 1118.79 )
-scale = Vector2( 23.736, 1 )
+position = Vector2( 2980, 1800 )
+scale = Vector2( 25.3145, 6.20785 )
 texture = ExtResource( 4 )
 
 [node name="Tile_27" type="Sprite" parent="LavaBackground"]
@@ -203,11 +206,20 @@ texture = ExtResource( 11 )
 [node name="StaticBody2D2" type="StaticBody2D" parent="Platforms/ground_grass2" groups=[
 "solid",
 ]]
-editor/display_folded = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/ground_grass2/StaticBody2D2" groups=[
 "solid",
 ]]
+shape = SubResource( 1 )
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Platforms/ground_grass2" groups=[
+"solid",
+]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/ground_grass2/StaticBody2D3" groups=[
+"solid",
+]]
+position = Vector2( 600.618, -316.196 )
 shape = SubResource( 1 )
 
 [node name="ground_grass3" type="Sprite" parent="Platforms"]
@@ -251,6 +263,16 @@ texture = ExtResource( 12 )
 ]]
 shape = SubResource( 2 )
 
+[node name="StaticBody2D6" type="StaticBody2D" parent="Platforms/ground_grass_small" groups=[
+"solid",
+]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/ground_grass_small/StaticBody2D6" groups=[
+"solid",
+]]
+position = Vector2( -636.19, -659.807 )
+shape = SubResource( 2 )
+
 [node name="ground_grass_small2" type="Sprite" parent="Platforms"]
 position = Vector2( 2986.54, 612.129 )
 texture = ExtResource( 12 )
@@ -280,9 +302,10 @@ shape = SubResource( 1 )
 
 [node name="Player" parent="." instance=ExtResource( 13 )]
 position = Vector2( 269.21, -32.6233 )
+top_jump_speed = 800
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2( 306.272, -266.925 )
+position = Vector2( 430.79, -167.377 )
 current = true
 
 [node name="timer" type="Node2D" parent="Player"]
@@ -312,34 +335,37 @@ texture = ExtResource( 16 )
 position = Vector2( 200, 0 )
 texture = ExtResource( 14 )
 
-[node name="goal_line" type="Sprite" parent="."]
-position = Vector2( 3422.32, 315.164 )
-scale = Vector2( 0.683105, 0.449918 )
-texture = ExtResource( 17 )
-
 [node name="extra_platforms" type="Node2D" parent="."]
-editor/display_folded = true
-visible = false
 
 [node name="ground_grass6" type="Sprite" parent="extra_platforms"]
-position = Vector2( 1596.25, 390.715 )
+position = Vector2( 1590, 380 )
 texture = ExtResource( 11 )
 
 [node name="ground_grass_small" type="Sprite" parent="extra_platforms"]
-position = Vector2( 1983.18, 143.406 )
+position = Vector2( 1980, 120 )
 texture = ExtResource( 12 )
 
 [node name="coin_gold" type="Sprite" parent="."]
-visible = false
-position = Vector2( 1965.58, 41.7241 )
-texture = ExtResource( 18 )
+position = Vector2( 2010, -20 )
+texture = ExtResource( 17 )
 
 [node name="robots" type="Node2D" parent="."]
-editor/display_folded = true
-visible = false
 
-[node name="Robot" parent="robots" instance=ExtResource( 19 )]
+[node name="Robot" parent="robots" instance=ExtResource( 18 )]
 position = Vector2( 1047.58, 661.247 )
 
-[node name="Robot2" parent="robots" instance=ExtResource( 19 )]
+[node name="Robot2" parent="robots" instance=ExtResource( 18 )]
 position = Vector2( 1643.32, 339.635 )
+
+[node name="goal_line" type="Sprite" parent="."]
+position = Vector2( 3460, 320 )
+scale = Vector2( 0.683105, 0.449918 )
+z_index = 1
+texture = ExtResource( 19 )
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2( 2740, 1780 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 230, -10 )
+shape = SubResource( 3 )

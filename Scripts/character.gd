@@ -1,9 +1,9 @@
 extends RigidBody2D
 
 # Default Character Properties (Should be overwritten)
-var acceleration = 1000
-var top_move_speed = 200
-var top_jump_speed = 400
+export var acceleration = 1000
+export var top_move_speed = 200
+export var top_jump_speed = 400
 
 # Movement Vars
 var directional_force = Vector2()
