@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://Images/background/blue.png" type="Texture" id=1]
 [ext_resource path="res://Images/foreground/cloud1.png" type="Texture" id=2]
@@ -32,10 +32,44 @@
 extents = Vector2( 80, 211.466 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 5168.61, 139.284 )
+extents = Vector2( 3096.46, 139.284 )
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 2480, 568.349 )
+
+[sub_resource type="DynamicFontData" id=5]
+hinting = 0
+font_path = "res://fonts/texgyreadventor-regular.otf"
+
+[sub_resource type="DynamicFont" id=6]
+resource_name = "texgyre"
+size = 49
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+extra_spacing_top = 13
+extra_spacing_char = 3
+font_data = SubResource( 5 )
+
+[sub_resource type="DynamicFont" id=7]
+resource_name = "texgyre"
+size = 49
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+extra_spacing_top = 10
+extra_spacing_char = 3
+font_data = SubResource( 5 )
+
+[sub_resource type="DynamicFont" id=8]
+resource_name = "texgyre"
+size = 43
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+extra_spacing_top = 10
+extra_spacing_char = 3
+font_data = SubResource( 5 )
 
 [node name="Main" type="Node2D"]
 
@@ -200,7 +234,7 @@ shape = SubResource( 2 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/Ground" groups=[
 "solid",
 ]]
-position = Vector2( -551.208, 408.106 )
+position = Vector2( 1525.48, 438.422 )
 shape = SubResource( 3 )
 
 [node name="du spinnst" type="Area2D" parent="."]
@@ -226,12 +260,12 @@ position = Vector2( 1645.75, -146.965 )
 texture = ExtResource( 21 )
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="langweilig"]
-margin_left = -187.0
-margin_top = -65.0
-margin_right = 333.0
-margin_bottom = 73.0
+margin_left = -215.242
+margin_top = -64.2419
+margin_right = 333.758
+margin_bottom = 29.7581
 mouse_filter = 2
-custom_fonts/normal_font = ExtResource( 22 )
+custom_fonts/normal_font = SubResource( 6 )
 text = "laaaaaangweilig!"
 scroll_active = false
 
@@ -240,12 +274,12 @@ position = Vector2( 2247.02, -150.305 )
 texture = ExtResource( 21 )
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="kein_spiel"]
-margin_left = -187.0
-margin_top = -65.0
-margin_right = 333.0
-margin_bottom = 73.0
+margin_left = -175.697
+margin_top = -79.1011
+margin_right = 250.303
+margin_bottom = 66.8989
 mouse_filter = 2
-custom_fonts/normal_font = ExtResource( 22 )
+custom_fonts/normal_font = SubResource( 7 )
 text = "das ist doch kein Spiel?!"
 scroll_active = false
 
@@ -271,15 +305,18 @@ position = Vector2( 20, -400 )
 texture = ExtResource( 24 )
 
 [node name="RichTextLabel4" type="RichTextLabel" parent="Player/du_spinnst"]
-margin_left = -211.311
-margin_top = -37.9815
-margin_right = 308.689
-margin_bottom = 100.018
+margin_left = -224.232
+margin_top = -42.3159
+margin_right = 295.768
+margin_bottom = 95.6836
 mouse_filter = 2
-custom_fonts/normal_font = ExtResource( 22 )
+custom_fonts/normal_font = SubResource( 8 )
 text = "   Waaaaaaah!
 Du spinnst doch!"
 scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2( 410, -247.384 )

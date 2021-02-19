@@ -9,8 +9,8 @@
 [ext_resource path="res://Images/character/Female adventurer/head.png" type="Texture" id=7]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 53.2572
-height = 92.9467
+radius = 53.6472
+height = 95.0875
 
 [sub_resource type="CircleShape2D" id=2]
 
@@ -30,7 +30,7 @@ position = Vector2( 0, -100 )
 z_index = 1
 
 [node name="back" type="Sprite" parent="Body/Graphics"]
-position = Vector2( 0, -31.881 )
+position = Vector2( 0, -34.881 )
 texture = ExtResource( 2 )
 
 [node name="arm2" type="Sprite" parent="Body/Graphics"]
