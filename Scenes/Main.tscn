@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://Images/background/blue.png" type="Texture" id=1]
 [ext_resource path="res://Images/foreground/cloud1.png" type="Texture" id=2]
@@ -24,17 +24,18 @@
 [ext_resource path="res://fonts/texgyre.tres" type="DynamicFont" id=22]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=23]
 [ext_resource path="res://Images/callout.png" type="Texture" id=24]
+[ext_resource path="res://Scripts/SwitchLevel.gd" type="Script" id=25]
 
 [sub_resource type="Environment" id=1]
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 80, 211.466 )
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 5168.61, 139.284 )
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 2480, 1500 )
+extents = Vector2( 2480, 568.349 )
 
 [node name="Main" type="Node2D"]
 
@@ -42,7 +43,6 @@ extents = Vector2( 2480, 1500 )
 environment = SubResource( 1 )
 
 [node name="Background" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="blue" type="Sprite" parent="Background"]
 position = Vector2( -6.02112, -433.518 )
@@ -62,7 +62,6 @@ position = Vector2( 984.37, -311.138 )
 texture = ExtResource( 4 )
 
 [node name="Clouds" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="cloud_white" type="Sprite" parent="Clouds"]
 position = Vector2( 3786.09, 1622.69 )
@@ -94,7 +93,6 @@ position = Vector2( 4572.04, 101.96 )
 texture = ExtResource( 6 )
 
 [node name="Ground" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="bushAlt1" type="Sprite" parent="Ground"]
 position = Vector2( 2053.2, 181.928 )
@@ -107,6 +105,10 @@ texture = ExtResource( 8 )
 [node name="bush1" type="Sprite" parent="Ground"]
 position = Vector2( 446.69, 164.392 )
 texture = ExtResource( 9 )
+
+[node name="treePine" type="Sprite" parent="Ground"]
+position = Vector2( 2543.59, -14.249 )
+texture = ExtResource( 14 )
 
 [node name="groundLayer1" type="Sprite" parent="Ground"]
 position = Vector2( 0, 390 )
@@ -135,7 +137,6 @@ texture = ExtResource( 10 )
 [node name="bush4" type="Sprite" parent="Ground"]
 position = Vector2( 9.63135, 162.248 )
 rotation = -0.174533
-scale = Vector2( 1, 1 )
 texture = ExtResource( 11 )
 
 [node name="treeLong" type="Sprite" parent="Ground"]
@@ -145,10 +146,6 @@ texture = ExtResource( 12 )
 [node name="treeLongOrange" type="Sprite" parent="Ground"]
 position = Vector2( 3170.98, 35.9112 )
 texture = ExtResource( 13 )
-
-[node name="treePine" type="Sprite" parent="Ground"]
-position = Vector2( 2576.12, 41.0613 )
-texture = ExtResource( 14 )
 
 [node name="goal_line_walked_front" type="Sprite" parent="Ground"]
 visible = false
@@ -171,7 +168,7 @@ position = Vector2( 1100, 230 )
 script = ExtResource( 18 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/GoalArea"]
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 
 [node name="laaangweilig" type="Area2D" parent="Ground"]
 position = Vector2( 1500, 230 )
@@ -179,7 +176,7 @@ script = ExtResource( 19 )
 node_path = "../../langweilig"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/laaangweilig"]
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 
 [node name="kein_spiel" type="Area2D" parent="Ground"]
 position = Vector2( 2010, 220 )
@@ -187,14 +184,14 @@ script = ExtResource( 19 )
 node_path = "../../kein_spiel"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/kein_spiel"]
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 
 [node name="remove_ground" type="Area2D" parent="Ground"]
 position = Vector2( 2820, 240 )
 script = ExtResource( 20 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/remove_ground"]
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 
 [node name="Ground" type="StaticBody2D" parent="Ground" groups=[
 "solid",
@@ -204,16 +201,24 @@ shape = SubResource( 3 )
 "solid",
 ]]
 position = Vector2( -551.208, 408.106 )
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="du spinnst" type="Area2D" parent="."]
-editor/display_folded = true
 position = Vector2( 2870, 450 )
 script = ExtResource( 19 )
 node_path = "../Player/du_spinnst"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="du spinnst"]
-position = Vector2( 714, 1550 )
+position = Vector2( 724.586, 787.838 )
+shape = SubResource( 4 )
+
+[node name="lava level" type="Area2D" parent="."]
+position = Vector2( 2870, 450 )
+script = ExtResource( 25 )
+level_name = "Lava"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="lava level"]
+position = Vector2( 714, 1931.08 )
 shape = SubResource( 4 )
 
 [node name="langweilig" type="Sprite" parent="."]
@@ -259,7 +264,6 @@ scroll_active = false
 ] instance=ExtResource( 23 )]
 position = Vector2( -440, 240 )
 z_index = 1
-acceleration = 1000
 top_move_speed = 300
 
 [node name="du_spinnst" type="Sprite" parent="Player"]

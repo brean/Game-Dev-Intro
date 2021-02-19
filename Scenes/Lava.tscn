@@ -16,7 +16,7 @@
 [ext_resource path="res://Images/ui/numbers/text_0.png" type="Texture" id=14]
 [ext_resource path="res://Images/ui/numbers/text_dots.png" type="Texture" id=15]
 [ext_resource path="res://Images/ui/numbers/text_1.png" type="Texture" id=16]
-[ext_resource path="res://Images/ui/coin_gold.png" type="Texture" id=17]
+[ext_resource path="res://Scenes/Coin.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Scenes/Robot.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Images/goal_line.png" type="Texture" id=19]
 
@@ -42,7 +42,7 @@ __meta__ = {
 [node name="LavaBackground" type="Node2D" parent="."]
 
 [node name="background_lava" type="Sprite" parent="LavaBackground"]
-position = Vector2( 3030, 480 )
+position = Vector2( 3032, 482 )
 scale = Vector2( 1313.36, 1.31631 )
 texture = ExtResource( 2 )
 
@@ -157,7 +157,6 @@ texture = ExtResource( 3 )
 offset = Vector2( 436, -250 )
 
 [node name="Clouds" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="cloud1" type="Sprite" parent="Clouds"]
 position = Vector2( 2900.94, -59.5012 )
@@ -192,7 +191,6 @@ texture = ExtResource( 11 )
 [node name="StaticBody2D" type="StaticBody2D" parent="Platforms/ground_grass" groups=[
 "solid",
 ]]
-editor/display_folded = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/ground_grass/StaticBody2D" groups=[
 "solid",
@@ -229,7 +227,6 @@ texture = ExtResource( 11 )
 [node name="StaticBody2D3" type="StaticBody2D" parent="Platforms/ground_grass3" groups=[
 "solid",
 ]]
-editor/display_folded = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/ground_grass3/StaticBody2D3" groups=[
 "solid",
@@ -243,7 +240,6 @@ texture = ExtResource( 11 )
 [node name="StaticBody2D4" type="StaticBody2D" parent="Platforms/ground_grass4" groups=[
 "solid",
 ]]
-editor/display_folded = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/ground_grass4/StaticBody2D4" groups=[
 "solid",
@@ -293,7 +289,6 @@ texture = ExtResource( 11 )
 [node name="StaticBody2D5" type="StaticBody2D" parent="Platforms/ground_grass5" groups=[
 "solid",
 ]]
-editor/display_folded = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/ground_grass5/StaticBody2D5" groups=[
 "solid",
@@ -309,7 +304,6 @@ position = Vector2( 430.79, -167.377 )
 current = true
 
 [node name="timer" type="Node2D" parent="Player"]
-editor/display_folded = true
 visible = false
 position = Vector2( 0, -250 )
 
@@ -345,20 +339,19 @@ texture = ExtResource( 11 )
 position = Vector2( 1980, 120 )
 texture = ExtResource( 12 )
 
-[node name="coin_gold" type="Sprite" parent="."]
-position = Vector2( 2010, -20 )
-texture = ExtResource( 17 )
+[node name="coin" parent="." instance=ExtResource( 17 )]
+position = Vector2( 2021, 33 )
 
 [node name="robots" type="Node2D" parent="."]
 
 [node name="Robot" parent="robots" instance=ExtResource( 18 )]
-position = Vector2( 1047.58, 661.247 )
+position = Vector2( 1049, 659 )
 
 [node name="Robot2" parent="robots" instance=ExtResource( 18 )]
 position = Vector2( 1643.32, 339.635 )
 
 [node name="goal_line" type="Sprite" parent="."]
-position = Vector2( 3460, 320 )
+position = Vector2( 3417, 351 )
 scale = Vector2( 0.683105, 0.449918 )
 z_index = 1
 texture = ExtResource( 19 )

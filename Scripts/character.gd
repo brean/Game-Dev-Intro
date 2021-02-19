@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 # Default Character Properties (Should be overwritten)
-export var acceleration = 1000
+export var acceleration = 2000
 export var top_move_speed = 200
 export var top_jump_speed = 400
 
@@ -43,5 +43,5 @@ func _integrate_forces(state):
 	state.set_linear_velocity(final_force)
 
 # This func is overwritten by the character
-func apply_force(state):
-	pass
+func apply_force(_state):
+	return
