@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://Images/background/blue.png" type="Texture" id=1]
 [ext_resource path="res://Images/foreground/cloud1.png" type="Texture" id=2]
@@ -21,7 +21,7 @@
 [ext_resource path="res://Scripts/ShowWhileCollidingWithPlayer.gd" type="Script" id=19]
 [ext_resource path="res://Scripts/RemoveOnCollide.gd" type="Script" id=20]
 [ext_resource path="res://Images/thought_cloud.png" type="Texture" id=21]
-[ext_resource path="res://fonts/texgyre.tres" type="DynamicFont" id=22]
+[ext_resource path="res://Images/foreground/red_white.png" type="Texture" id=22]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=23]
 [ext_resource path="res://Images/callout.png" type="Texture" id=24]
 [ext_resource path="res://Scripts/SwitchLevel.gd" type="Script" id=25]
@@ -34,42 +34,42 @@ extents = Vector2( 80, 211.466 )
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 3096.46, 139.284 )
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 339.443, 576.043 )
+
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 2480, 568.349 )
 
-[sub_resource type="DynamicFontData" id=5]
+[sub_resource type="DynamicFontData" id=6]
 hinting = 0
 font_path = "res://fonts/texgyreadventor-regular.otf"
 
-[sub_resource type="DynamicFont" id=6]
-resource_name = "texgyre"
+[sub_resource type="DynamicFont" id=7]
 size = 49
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 extra_spacing_top = 13
 extra_spacing_char = 3
-font_data = SubResource( 5 )
+font_data = SubResource( 6 )
 
-[sub_resource type="DynamicFont" id=7]
-resource_name = "texgyre"
+[sub_resource type="DynamicFont" id=8]
 size = 49
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 extra_spacing_top = 10
 extra_spacing_char = 3
-font_data = SubResource( 5 )
+font_data = SubResource( 6 )
 
-[sub_resource type="DynamicFont" id=8]
-resource_name = "texgyre"
+[sub_resource type="DynamicFont" id=9]
 size = 43
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 extra_spacing_top = 10
 extra_spacing_char = 3
-font_data = SubResource( 5 )
+font_data = SubResource( 6 )
 
 [node name="Main" type="Node2D"]
 
@@ -79,7 +79,7 @@ environment = SubResource( 1 )
 [node name="Background" type="Node2D" parent="."]
 
 [node name="blue" type="Sprite" parent="Background"]
-position = Vector2( -6.02112, -433.518 )
+position = Vector2( 15.3363, -433.518 )
 scale = Vector2( 9532.23, 2033.8 )
 texture = ExtResource( 1 )
 
@@ -104,6 +104,10 @@ texture = ExtResource( 5 )
 
 [node name="cloudLayer1" type="Sprite" parent="Clouds"]
 position = Vector2( -512, 80 )
+texture = ExtResource( 6 )
+
+[node name="cloudLayer7" type="Sprite" parent="Clouds"]
+position = Vector2( -1530.67, 85.3394 )
 texture = ExtResource( 6 )
 
 [node name="cloudLayer2" type="Sprite" parent="Clouds"]
@@ -156,6 +160,10 @@ texture = ExtResource( 10 )
 position = Vector2( -1024, 390 )
 texture = ExtResource( 10 )
 
+[node name="groundLayer7" type="Sprite" parent="Ground"]
+position = Vector2( -2042.67, 388 )
+texture = ExtResource( 10 )
+
 [node name="groundLayer4" type="Sprite" parent="Ground"]
 position = Vector2( 2048, 390 )
 texture = ExtResource( 10 )
@@ -174,7 +182,7 @@ rotation = -0.174533
 texture = ExtResource( 11 )
 
 [node name="treeLong" type="Sprite" parent="Ground"]
-position = Vector2( -830, -20 )
+position = Vector2( -995, -20 )
 texture = ExtResource( 12 )
 
 [node name="treeLongOrange" type="Sprite" parent="Ground"]
@@ -234,8 +242,15 @@ shape = SubResource( 2 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/Ground" groups=[
 "solid",
 ]]
-position = Vector2( 1525.48, 438.422 )
+position = Vector2( 1527.6, 436.303 )
 shape = SubResource( 3 )
+
+[node name="Node2D" type="StaticBody2D" parent="Ground"]
+position = Vector2( -1431.58, -68.7877 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/Node2D"]
+position = Vector2( -3.31836, -5.44757 )
+shape = SubResource( 10 )
 
 [node name="du spinnst" type="Area2D" parent="."]
 position = Vector2( 2870, 450 )
@@ -244,16 +259,16 @@ node_path = "../Player/du_spinnst"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="du spinnst"]
 position = Vector2( 724.586, 787.838 )
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
 [node name="lava level" type="Area2D" parent="."]
 position = Vector2( 2870, 450 )
 script = ExtResource( 25 )
-level_name = "Lava"
+level_name = "LavaSimple"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="lava level"]
-position = Vector2( 714, 1931.08 )
-shape = SubResource( 4 )
+position = Vector2( 717.364, 1934.44 )
+shape = SubResource( 5 )
 
 [node name="langweilig" type="Sprite" parent="."]
 position = Vector2( 1645.75, -146.965 )
@@ -265,7 +280,7 @@ margin_top = -64.2419
 margin_right = 333.758
 margin_bottom = 29.7581
 mouse_filter = 2
-custom_fonts/normal_font = SubResource( 6 )
+custom_fonts/normal_font = SubResource( 7 )
 text = "laaaaaangweilig!"
 scroll_active = false
 
@@ -279,18 +294,8 @@ margin_top = -79.1011
 margin_right = 250.303
 margin_bottom = 66.8989
 mouse_filter = 2
-custom_fonts/normal_font = SubResource( 7 )
+custom_fonts/normal_font = SubResource( 8 )
 text = "das ist doch kein Spiel?!"
-scroll_active = false
-
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-margin_left = -150.0
-margin_top = -284.0
-margin_right = 842.0
-margin_bottom = -216.0
-mouse_filter = 2
-custom_fonts/normal_font = ExtResource( 22 )
-text = "GameLoop"
 scroll_active = false
 
 [node name="Player" parent="." groups=[
@@ -310,7 +315,7 @@ margin_top = -42.3159
 margin_right = 295.768
 margin_bottom = 95.6836
 mouse_filter = 2
-custom_fonts/normal_font = SubResource( 8 )
+custom_fonts/normal_font = SubResource( 9 )
 text = "   Waaaaaaah!
 Du spinnst doch!"
 scroll_active = false
@@ -322,3 +327,19 @@ __meta__ = {
 position = Vector2( 410, -247.384 )
 current = true
 smoothing_enabled = true
+
+[node name="red_white" type="Sprite" parent="."]
+position = Vector2( -1102, 264 )
+texture = ExtResource( 22 )
+
+[node name="red_white2" type="Sprite" parent="."]
+position = Vector2( -1102, 194 )
+texture = ExtResource( 22 )
+
+[node name="red_white3" type="Sprite" parent="."]
+position = Vector2( -1102, 124 )
+texture = ExtResource( 22 )
+
+[node name="red_white4" type="Sprite" parent="."]
+position = Vector2( -1102, 54 )
+texture = ExtResource( 22 )

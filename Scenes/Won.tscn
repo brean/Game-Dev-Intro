@@ -127,11 +127,11 @@ tracks/8/keys = {
 
 [sub_resource type="Theme" id=2]
 
-[sub_resource type="DynamicFontData" id=5]
+[sub_resource type="DynamicFontData" id=3]
 hinting = 0
 font_path = "res://fonts/texgyreadventor-regular.otf"
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=4]
 resource_name = "texgyre"
 size = 63
 outline_size = 4
@@ -139,9 +139,9 @@ outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 extra_spacing_top = 10
 extra_spacing_char = 11
-font_data = SubResource( 5 )
+font_data = SubResource( 3 )
 
-[node name="Node2D" type="Node2D"]
+[node name="Won" type="Node2D"]
 
 [node name="blue" type="Sprite" parent="."]
 position = Vector2( 960, 540 )
@@ -214,7 +214,7 @@ margin_top = 194.0
 margin_right = 1273.0
 margin_bottom = 290.0
 theme = SubResource( 2 )
-custom_fonts/normal_font = SubResource( 6 )
+custom_fonts/normal_font = SubResource( 4 )
 custom_colors/default_color = Color( 0.964706, 0.815686, 0.360784, 1 )
 text = " GEWONNEN!"
 __meta__ = {

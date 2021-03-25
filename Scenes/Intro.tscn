@@ -20,7 +20,7 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 anti_aliasing_size = 2
 
-[node name="Node2D" type="Node2D"]
+[node name="Intro" type="Node2D"]
 
 [node name="blue" type="Sprite" parent="."]
 position = Vector2( 961.108, 540 )
